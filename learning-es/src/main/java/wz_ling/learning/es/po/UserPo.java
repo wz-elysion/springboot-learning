@@ -1,14 +1,16 @@
 package wz_ling.learning.es.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Accessors(fluent = true)
 @Document(indexName = "user", shards = 3, replicas = 2)
 public class UserPo {
     @Id

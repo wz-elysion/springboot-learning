@@ -13,11 +13,11 @@ import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 import wz_ling.learning.es.po.UserPo;
+import wz_ling.learning.es.util.ESLogUtil;
 
 import java.util.Map;
 
 @Slf4j
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EsLearningApplication.class)
 public class EsTest {
@@ -25,17 +25,17 @@ public class EsTest {
     @Autowired
     private ElasticsearchRestTemplate elasticsearchTemplate;
 
-
     @Test
     public void test() {
-        createIndex();
+//        createIndex();
 //        deleteIndex();
 //        saveOne();
-//        getOne();
+        getOne();
 //        deleteOne();
-        batchSave();
+//        batchSave();
 //        search();
 //        batchDelete();
+//        testLog();
     }
 
     public void createIndex() {
@@ -100,6 +100,10 @@ public class EsTest {
     public void batchDelete() {
         String indexName = UserPo.class.getAnnotation(Document.class).indexName();
         elasticsearchTemplate.delete(Query.findAll(), UserPo.class, IndexCoordinates.of(indexName));
+    }
+
+    public void testLog() {
+        ESLogUtil.debug("测试：{}", UserPo.builder().id("1001").name("zhangsan1").age(18).sex("男").build());
     }
 
 }
