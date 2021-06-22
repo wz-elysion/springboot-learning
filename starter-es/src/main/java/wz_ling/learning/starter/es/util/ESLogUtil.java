@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
-import wz_ling.learning.es.po.LoggerPo;
+import wz_ling.learning.starter.es.po.LoggerPo;
 
 import java.time.LocalDateTime;
 

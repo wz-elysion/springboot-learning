@@ -3,6 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <project.version>0.0.1-SNAPSHOT</project.version>
+    </properties>
 
     <groupId>wz_ling</groupId>
     <artifactId>springboot-learning</artifactId>
@@ -11,15 +15,10 @@
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
-
     <modules>
         <module>learning-es</module>
         <module>starter-es</module>
     </modules>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -29,6 +28,16 @@
                 <version>2.3.12.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>wz_ling</groupId>
+                <artifactId>starter-es</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>wz_ling</groupId>
+                <artifactId>learning-es</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

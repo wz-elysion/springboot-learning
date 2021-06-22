@@ -25,3 +25,7 @@ hs_err_pid*
 /learning-es/learning-es.iml
 /springboot-learning.iml
 /.idea/
+/starter-es/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/starter-es/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/starter-es/target/maven-archiver/pom.properties
+/starter-es/starter-es.iml

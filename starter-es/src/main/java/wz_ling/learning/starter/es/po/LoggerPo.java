@@ -1,4 +1,4 @@
-package wz_ling.learning.es.po;
+package wz_ling.learning.starter.es.po;
 
 import lombok.Builder;
 import lombok.Data;

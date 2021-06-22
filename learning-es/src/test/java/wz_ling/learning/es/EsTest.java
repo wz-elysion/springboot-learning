@@ -13,7 +13,7 @@ import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 import wz_ling.learning.es.po.UserPo;
-import wz_ling.learning.es.util.ESLogUtil;
+import wz_ling.learning.starter.es.util.ESLogUtil;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public class EsTest {
 //        createIndex();
 //        deleteIndex();
 //        saveOne();
-        getOne();
+//        getOne();
 //        deleteOne();
 //        batchSave();
 //        search();
