@@ -4,26 +4,21 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import wz_ling.learning.starter.es.po.LoggerPo;
 
 import java.time.LocalDateTime;
 
-import static java.util.Objects.isNull;
 
 @Slf4j
 public class ESLogUtil {
 
     private static volatile ElasticsearchRestTemplate elasticsearchTemplate;
+    private static volatile IndexCoordinates index;
 
-    public static void setElasticsearchRestTemplate(ElasticsearchRestTemplate elasticsearchTemplate) {
-        if (isNull(ESLogUtil.elasticsearchTemplate)) {
-            synchronized (ESLogUtil.class) {
-                if (isNull(ESLogUtil.elasticsearchTemplate)) {
-                    log.info("LogManager init elasticsearchTemplate ...");
-                    ESLogUtil.elasticsearchTemplate = elasticsearchTemplate;
-                }
-            }
-        }
+    public static void initESLogUtil(ElasticsearchRestTemplate elasticsearchTemplate, IndexCoordinates index) {
+        ESLogUtil.elasticsearchTemplate = elasticsearchTemplate;
+        ESLogUtil.index = index;
     }
 
     public static void debug(String format, Object... objects) {
@@ -45,7 +40,7 @@ public class ESLogUtil {
                 .lineNumber(lineNumber)
                 .log(format).build();
         //这里可以优化，一批批发送
-        elasticsearchTemplate.save(log);
+        elasticsearchTemplate.save(log, index);
     }
 
     public static void info() {
