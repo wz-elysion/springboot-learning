@@ -3,21 +3,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <project.version>0.0.1-SNAPSHOT</project.version>
-    </properties>
-
     <groupId>wz_ling</groupId>
     <artifactId>springboot-learning</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>0.0.1-SNAPSHOT</version>-->
+    <version>${revision}</version>
     <name>springboot-learning</name>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <project.version>0.0.1-SNAPSHOT</project.version>
+        <springboot.version>2.3.12.RELEASE</springboot.version>
+        <revision>0.0.1-SNAPSHOT</revision>
+    </properties>
+
     <modules>
         <module>learning-es</module>
         <module>starter-es</module>
+        <module>learning-mybatis-generator</module>
     </modules>
 
     <dependencyManagement>
@@ -25,19 +29,19 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.3.12.RELEASE</version>
+                <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>wz_ling</groupId>
                 <artifactId>starter-es</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>wz_ling</groupId>
                 <artifactId>learning-es</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
