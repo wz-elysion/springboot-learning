@@ -22,6 +22,7 @@
         <module>learning-es</module>
         <module>starter-es</module>
         <module>learning-mybatis-generator</module>
+        <module>learning-mybatis</module>
     </modules>
 
     <dependencyManagement>
@@ -41,6 +42,11 @@
             <dependency>
                 <groupId>wz_ling</groupId>
                 <artifactId>learning-es</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>wz_ling</groupId>
+                <artifactId>learning-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
