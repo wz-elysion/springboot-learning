@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.weekend.WeekendSqls;
+import wz_ling.learning.mybatis.base.PageQuery;
 import wz_ling.learning.mybatis.dao.PersonMapper;
 import wz_ling.learning.mybatis.po.PersonPO;
 
@@ -44,6 +45,16 @@ public class PersonTest {
         Example example = Example.builder(PersonPO.class).where(sqls).build();
         List<PersonPO> list = personMapper.selectByExample(example);
         log.info("query success：{}", list);
+    }
+
+    @Test
+    public void pageQuery(){
+        PageQuery<PersonPO> pageQuery =  new PageQuery<PersonPO>()
+                .setPageNum(1)
+                .setPageSize(3)
+                .setPageSupplier(()-> personMapper.selectAll());
+        PageInfo<PersonPO> personPOPageInfo = personMapper.pageQuery(pageQuery);
+        log.info("query success：{}", personPOPageInfo);
     }
 
 
