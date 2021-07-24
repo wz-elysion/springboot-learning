@@ -19,4 +19,5 @@ public class PersonController {
     public List<PersonPO> list() {
         return personService.list();
     }
+
 }

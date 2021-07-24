@@ -3,6 +3,7 @@ package wz_ling.learning.mybatis.po;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 public class PersonPO {
 
     @Id
+    @GeneratedValue(generator = "JDBC")//可回显主键id
     private Integer id;
 
     @Column(name = "`name`")
