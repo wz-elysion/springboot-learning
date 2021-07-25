@@ -4,6 +4,9 @@ package wz_ling.learning.mybatis;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.cursor.Cursor;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import wz_ling.learning.mybatis.po.PersonPO;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -39,7 +43,7 @@ public class PersonTest {
     }
 
     @Test
-    public void query(){
+    public void query() {
         WeekendSqls<PersonPO> sqls = WeekendSqls.custom();
         sqls.andEqualTo(PersonPO::getAge, 20);
         Example example = Example.builder(PersonPO.class).where(sqls).build();
@@ -48,13 +52,32 @@ public class PersonTest {
     }
 
     @Test
-    public void pageQuery(){
-        PageQuery<PersonPO> pageQuery =  new PageQuery<PersonPO>()
+    public void pageQuery() {
+        PageQuery<PersonPO> pageQuery = new PageQuery<PersonPO>()
                 .setPageNum(1)
                 .setPageSize(3)
-                .setPageSupplier(()-> personMapper.selectAll());
+                .setPageSupplier(() -> personMapper.selectAll());
         PageInfo<PersonPO> personPOPageInfo = personMapper.pageQuery(pageQuery);
         log.info("query success：{}", personPOPageInfo);
+    }
+
+
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
+
+    @Test
+    public void cursor() {
+        WeekendSqls<PersonPO> sqls = WeekendSqls.custom();
+        Example example = Example.builder(PersonPO.class).where(sqls).build();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Cursor<PersonPO> personPOS = sqlSession.getMapper(PersonMapper.class).selectCursorByExampleMapper(example);
+        AtomicInteger count = new AtomicInteger(0);
+        personPOS.forEach(x -> {
+            log.info("query success：{}", x);
+            count.getAndIncrement();
+        });
+        sqlSession.close();
+        log.info("count：{}", count);
     }
 
 
