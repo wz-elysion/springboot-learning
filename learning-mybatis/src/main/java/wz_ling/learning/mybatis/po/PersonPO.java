@@ -1,6 +1,7 @@
 package wz_ling.learning.mybatis.po;
 
 import lombok.Data;
+import wz_ling.learning.mybatis.typeHandler.GenderEnum;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,9 @@ public class PersonPO {
 
     @Column(name = "`age`")
     private Integer age;
+
+    @Column(name = "`gender`")
+    private GenderEnum gender;
 
     @Column(name = "`desc`")
     private String desc;
