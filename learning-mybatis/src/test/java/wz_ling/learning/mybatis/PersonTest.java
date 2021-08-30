@@ -17,6 +17,7 @@ import tk.mybatis.mapper.weekend.WeekendSqls;
 import wz_ling.learning.mybatis.base.PageQuery;
 import wz_ling.learning.mybatis.dao.PersonMapper;
 import wz_ling.learning.mybatis.po.PersonPO;
+import wz_ling.learning.mybatis.service.PersonService;
 
 import java.util.List;
 import java.util.Random;
@@ -31,15 +32,18 @@ public class PersonTest {
     @Autowired
     private PersonMapper personMapper;
 
+    @Autowired
+    private PersonService personService;
+
     @Test
-    public void insert() {
+    public void insert() throws InterruptedException {
         PersonPO person = new PersonPO();
         person.setAge(new Random().nextInt(40) + 5);
         String desc = UUID.randomUUID().toString().substring(0, 8);
         person.setName("zhangsan" + desc);
         person.setDesc(desc);
-        personMapper.insert(person);
-        log.info("insert success：{}", person);
+//        personMapper.insert(person);
+        log.info("thread-{},insert success：{}", Thread.currentThread().getId(), personService.insert(person));
     }
 
     @Test
