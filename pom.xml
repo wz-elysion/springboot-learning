@@ -5,8 +5,7 @@
 
     <groupId>wz_ling</groupId>
     <artifactId>springboot-learning</artifactId>
-<!--    <version>0.0.1-SNAPSHOT</version>-->
-    <version>${revision}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>springboot-learning</name>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
@@ -23,7 +22,17 @@
         <module>starter-es</module>
         <module>learning-mybatis-generator</module>
         <module>learning-mybatis</module>
+        <module>base-framework-utils</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <revision>0.0.1-SNAPSHOT</revision>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
