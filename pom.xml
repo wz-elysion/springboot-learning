@@ -23,6 +23,8 @@
         <module>learning-mybatis-generator</module>
         <module>learning-mybatis</module>
         <module>base-framework-utils</module>
+        <module>aspect-demo</module>
+        <module>learning-db</module>
     </modules>
 
     <profiles>

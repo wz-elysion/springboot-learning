@@ -1,4 +1,4 @@
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-@Slf4j
+//@Slf4j
 public class FileCopyTest {
 
     @Test

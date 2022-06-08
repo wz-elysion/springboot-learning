@@ -1,0 +1,5 @@
+wz_ling\learning\transaction\service\TransactionDemoService.class
+wz_ling\learning\transaction\TransactionApplication.class
+wz_ling\learning\transaction\domain\po\DemoPo.class
+wz_ling\learning\transaction\mapper\DemoMapper.class
+wz_ling\learning\transaction\base\BaseMapper.class
